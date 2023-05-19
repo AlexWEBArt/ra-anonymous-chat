@@ -60,12 +60,7 @@ export default function Chat() {
     }, [])
 
     useEffect(() => {
-        // clearTimeout(window.timeout);
-        let timeout;
-        if (preloader) {
-            console.log('ok')
-            timeout = setTimeout(loadMessages, 2000)
-        }
+        let timeout = setTimeout(loadMessages, 2000)
         
         return () => {
             clearTimeout(timeout);
