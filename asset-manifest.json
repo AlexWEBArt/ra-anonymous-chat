@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ra-anonymous-chat/static/css/main.c171df29.css",
+    "main.js": "/ra-anonymous-chat/static/js/main.d91f3553.js",
+    "static/js/787.69471e96.chunk.js": "/ra-anonymous-chat/static/js/787.69471e96.chunk.js",
+    "index.html": "/ra-anonymous-chat/index.html",
+    "main.c171df29.css.map": "/ra-anonymous-chat/static/css/main.c171df29.css.map",
+    "main.d91f3553.js.map": "/ra-anonymous-chat/static/js/main.d91f3553.js.map",
+    "787.69471e96.chunk.js.map": "/ra-anonymous-chat/static/js/787.69471e96.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c171df29.css",
+    "static/js/main.d91f3553.js"
+  ]
+}
