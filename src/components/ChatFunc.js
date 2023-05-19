@@ -17,34 +17,15 @@ export default function Chat() {
     const [messageId, setMessageId] = useState(0);
     const [messages, setMessages] = useState([]);
 
-
-    let timeout;
-
-    const apiURL = 'https://ra-anonymous-chat-backend.onrender.com/';
-
-    useEffect(() => {
-        console.log('prestart')
-        // loadMessages();
-        timeout = setTimeout(() => {loadMessages()}, 0)
-    }, [])
-
-    useEffect(() => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {loadMessages()}, 2000)
-        
-        return () => {
-            clearTimeout(timeout);
-        }
-    }, [updated])
-
     const loadMessages = () => {
-        // setTimeout(() => {
+        setTimeout(() => {
             setPreloader(true);
-            reqestFrom(apiURL, messageId).then((result) => {         
+            reqestFrom(apiURL, messageId).then((result) => {     
                 if (result.length > 0) {
                     const prevItemArr = [];
-
+                    if (messages.find(cU => cU.id === result[0].id)) {return null}
                     result.forEach(item => {
+
                         let color;
                         if (item.userId === text.userId) {
                             color = text.color;
@@ -67,8 +48,32 @@ export default function Chat() {
                 setUpdated(new Date().getTime());
                 setPreloader(false);
             })
-        // }, 0)
+        }, 0)
     }
+
+    const apiURL = 'https://ra-anonymous-chat-backend.onrender.com/';
+
+    useEffect(() => {
+        console.log('prestart')
+        loadMessages()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        // clearTimeout(window.timeout);
+        let timeout;
+        if (preloader) {
+            console.log('ok')
+            timeout = setTimeout(loadMessages, 2000)
+        }
+        
+        return () => {
+            clearTimeout(timeout);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [updated])
+
+    
 
     const handleChange = (e) => {
         const { value } = e.target;
